@@ -1,9 +1,8 @@
 {
     "routes": [
       {
-        "route": "/api/*",
+        "route": "/*",
         "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "rewrite": "/api"
       }
     ]
   }
