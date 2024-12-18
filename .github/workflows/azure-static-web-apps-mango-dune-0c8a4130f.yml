@@ -22,6 +22,11 @@ jobs:
 
       - name: Ensure output directory exists
         run: mkdir -p dist
+
+      - name: Install dependencies
+        run: npm install
+      - name: Build the project
+        run: npm run build
       - name: Copy staticwebapp.config.json
         run: cp staticwebapp.config.json ./dist/
 
