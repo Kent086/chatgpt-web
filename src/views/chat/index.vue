@@ -12,7 +12,7 @@ import { useUsingContext } from './hooks/useUsingContext'
 import HeaderComponent from './components/Header/index.vue'
 import { HoverButton, SvgIcon } from '@/components/common'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { useChatStore, usePromptStore } from '@/store'
+import { useChatStore, usePromptStore, useSettingStore } from '@/store'
 import { fetchChatAPIProcess } from '@/api'
 import { t } from '@/locales'
 
@@ -23,6 +23,14 @@ const dialog = useDialog()
 const ms = useMessage()
 
 const chatStore = useChatStore()
+
+const settingStore = useSettingStore()
+const systemMessage = ref(settingStore.systemMessage ?? '')
+const temperature = ref(settingStore.temperature ?? 0.7)
+const top_p = ref(settingStore.top_p ?? 0.95)
+const max_tokens = ref(settingStore.max_tokens ?? 3000)
+const frequency_penalty = ref(settingStore.frequency_penalty ?? 0)
+const presence_penalty = ref(settingStore.presence_penalty ?? 0)
 
 const { isMobile } = useBasicLayout()
 const { addChat, updateChat, updateChatSome, getChatByUuidAndIndex } = useChat()
@@ -107,6 +115,12 @@ async function onConversation() {
     const fetchChatAPIOnce = async () => {
       await fetchChatAPIProcess<Chat.ChatResponse>({
         chatMessages: dataSources.value,
+        systemMessage: systemMessage.value,
+        max_tokens: max_tokens.value,
+        temperature: temperature.value,
+        top_p: top_p.value,
+        frequency_penalty: frequency_penalty.value,
+        presence_penalty: presence_penalty.value,
         signal: controller.signal,
         onDownloadProgress: ({ event }) => {
           const xhr = event.target

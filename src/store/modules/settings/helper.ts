@@ -6,13 +6,19 @@ export interface SettingsState {
   systemMessage: string
   temperature: number
   top_p: number
+  max_tokens: number
+  frequency_penalty: number
+  presence_penalty: number
 }
 
 export function defaultSetting(): SettingsState {
   return {
-    systemMessage: 'You are ChatGPT, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.',
-    temperature: 0.8,
-    top_p: 1,
+    systemMessage: 'You are an AI assistant that helps people find information.',
+    temperature: 0.7,
+    top_p: 0.95,
+    max_tokens: 3000,
+    frequency_penalty: 0,
+    presence_penalty: 0,
   }
 }
 

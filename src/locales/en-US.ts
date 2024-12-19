@@ -57,6 +57,7 @@ export default {
   setting: {
     setting: 'Setting',
     general: 'General',
+    about: 'About',
     advanced: 'Advanced',
     config: 'Config',
     avatarLink: 'Avatar Link',
@@ -65,6 +66,9 @@ export default {
     role: 'Role',
     temperature: 'Temperature',
     top_p: 'Top_p',
+    max_tokens: 'Max response',
+    frequency_penalty: 'Frequency Penalty',
+    presence_penalty: 'Presence Penalty',
     resetUserInfo: 'Reset UserInfo',
     chatHistory: 'ChatHistory',
     theme: 'Theme',

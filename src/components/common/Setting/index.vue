@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { NModal, NTabPane, NTabs } from 'naive-ui'
 import General from './General.vue'
 import About from './About.vue'
+import Advanced from './Advanced.vue'
 import { SvgIcon } from '@/components/common'
 
 interface Props {
@@ -42,10 +43,17 @@ const show = computed({
             <General />
           </div>
         </NTabPane>
-        <NTabPane name="Config" tab="Config">
+        <NTabPane name="Advanced" tab="Advanced">
           <template #tab>
             <SvgIcon class="text-lg" icon="ri:list-settings-line" />
-            <span class="ml-2">{{ $t('setting.config') }}</span>
+            <span class="ml-2">{{ $t('setting.advanced') }}</span>
+          </template>
+          <Advanced />
+        </NTabPane>
+        <NTabPane name="About" tab="About">
+          <template #tab>
+            <SvgIcon class="text-lg" icon="ri:list-settings-line" />
+            <span class="ml-2">{{ $t('setting.about') }}</span>
           </template>
           <About />
         </NTabPane>

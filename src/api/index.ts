@@ -22,12 +22,23 @@ export function fetchChatConfig<T = any>() {
 export function fetchChatAPIProcess<T = any>(
   params: {
     chatMessages: Chat.Chat[]
+    systemMessage: string
+    temperature: number
+    top_p: number
+    max_tokens: number
+    frequency_penalty: number
+    presence_penalty: number
     signal?: GenericAbortSignal
     onDownloadProgress?: (progressEvent: AxiosProgressEvent) => void },
 ) {
   const data: Record<string, any> = {
     messages: params.chatMessages,
-    max_tokens: 200,
+    max_tokens: params.max_tokens,
+    systemMessage: params.systemMessage,
+    temperature: params.temperature,
+    top_p: params.top_p,
+    frequency_penalty: params.frequency_penalty,
+    presence_penalty: params.presence_penalty,
   }
 
   return post<T>({
