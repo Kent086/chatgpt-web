@@ -13,7 +13,7 @@ export interface SettingsState {
 
 export function defaultSetting(): SettingsState {
   return {
-    systemMessage: 'You are an AI assistant that helps people find information.',
+    systemMessage: '你是一个帮助用户查找信息的 AI 助手。',
     temperature: 0.7,
     top_p: 0.95,
     max_tokens: 3000,
